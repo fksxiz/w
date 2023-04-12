@@ -11,7 +11,12 @@ import org.junit.Assert.*
  */
 class ExampleUnitTest {
     @Test
-    fun addition_isCorrect() {
+    fun funName_action_return() {
         assertEquals(4, 2 + 2)
+    }
+
+    @Test
+    fun validatePassword_4symbolPassword_false() {
+        assertEquals(true, false)
     }
 }

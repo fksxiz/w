@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.google.android.material.button.MaterialButton
+import org.json.JSONObject
 
 
 class MainFragment : Fragment() {
@@ -59,7 +60,7 @@ class MainFragment : Fragment() {
     }
 
     private val OnCreateButtonClickListener = OnClickListener {
-        //apiViewModel.AuthProfile("")
+        (activity as MainActivity).showFragment(CreateFragment.newInstance())
     }
 
     companion object {

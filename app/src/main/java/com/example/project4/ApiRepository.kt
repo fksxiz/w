@@ -58,20 +58,20 @@ class ApiRepository {
             .build()
 
         val request = Request.Builder().post(dataToRequestBody(""))
-            .addHeader("accept",accept)
-            .addHeader("email",email)
-            .addHeader("code",code)
+            .addHeader("accept", accept)
+            .addHeader("email", email)
+            .addHeader("code", code)
             .url(url).build()
 
-        client.newCall(request).enqueue(object:Callback{
+        client.newCall(request).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
-                Log.e("Server","${e.message}")
+                Log.e("Server", "${e.message}")
                 callback(e.message.toString())
             }
 
             override fun onResponse(call: Call, response: Response) {
-                if(!response.isSuccessful){
-                    Log.e("Server",response.message)
+                if (!response.isSuccessful) {
+                    Log.e("Server", response.message)
                     callback(response.message)
                     return
                 }
@@ -83,30 +83,49 @@ class ApiRepository {
         })
     }
 
-    fun CreateProfile(data: String, callback: () -> Unit) {
-
-
+    fun CreateProfile(data: String, callback: (String) -> Unit) {
 
         val request = Request.Builder().post(
-            dataToRequestBody("")
+            dataToRequestBody(data)
         ).url(
             HttpUrl.Builder()
                 .scheme("https")
                 .host("medic.madskill.ru")
                 .addPathSegments("api/createProfile")
                 .build()
-        ).addHeader("id",).build()
+        )
+            .addHeader("Authorization", "Bearer ${BusinessToken.token}")
+            .build()
+
+        client.newCall(request).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                Log.e("Server", "${e.message}")
+                callback(e.message.toString())
+            }
+
+            override fun onResponse(call: Call, response: Response) {
+                if (!response.isSuccessful) {
+                    Log.e("Server", response.message)
+                    callback(response.message)
+                    return
+                }
+
+                callback(response.message)
+
+            }
+
+        })
     }
 
-    private fun parseAuthResponse(body:String): String{
+    private fun parseAuthResponse(body: String): String {
         return try {
 
             val response = JSONObject(body)
-
+            BusinessToken.token = response.getString("token")
             response.getString("token")
 
-        }catch (e: JSONException){
-            Log.e("Parser","parse response error = ${e.message}")
+        } catch (e: JSONException) {
+            Log.e("Parser", "parse response error = ${e.message}")
             "Parse error"
         }
     }

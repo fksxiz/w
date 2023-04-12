@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".CreateFragment">
+
+    <EditText
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintWidth_percent="0.4"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/middleNameEditText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:hint="Имя"
+        android:id="@+id/nameEditText"
+        android:inputType="textEmailAddress"
+        app:layout_constraintVertical_chainStyle="packed"
+        />
+
+    <EditText
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintWidth_percent="0.4"
+        app:layout_constraintTop_toBottomOf="@id/nameEditText"
+        app:layout_constraintBottom_toTopOf="@+id/lastNameEditText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:hint="Отчество"
+        android:id="@+id/middleNameEditText"
+        android:inputType="textEmailAddress"
+        app:layout_constraintVertical_chainStyle="packed"
+        />
+
+    <EditText
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintWidth_percent="0.4"
+        app:layout_constraintTop_toBottomOf="@id/middleNameEditText"
+        app:layout_constraintBottom_toTopOf="@+id/birthDateEditText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:hint="Фамилия"
+        android:id="@+id/lastNameEditText"
+        android:inputType="textEmailAddress"
+        app:layout_constraintVertical_chainStyle="packed"
+        />
+
+    <EditText
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintWidth_percent="0.4"
+        app:layout_constraintTop_toBottomOf="@id/lastNameEditText"
+        app:layout_constraintBottom_toTopOf="@+id/genderEditText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:hint="Дата рождения"
+        android:id="@+id/birthDateEditText"
+        android:inputType="textEmailAddress"
+        app:layout_constraintVertical_chainStyle="packed"
+        />
+
+    <EditText
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintWidth_percent="0.4"
+        app:layout_constraintTop_toBottomOf="@id/birthDateEditText"
+        app:layout_constraintBottom_toTopOf="@+id/okButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:hint="Пол"
+        android:id="@+id/genderEditText"
+        android:inputType="textEmailAddress"
+        app:layout_constraintVertical_chainStyle="packed"
+        />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/okButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintWidth_percent="0.4"
+        app:layout_constraintTop_toBottomOf="@id/genderEditText"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Создать"
+        />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
