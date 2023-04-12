@@ -16,40 +16,59 @@
         app:layout_constraintWidth_percent="0.4"
         android:text="Отправить код"
         android:id="@+id/SendButton"
+        app:layout_constraintVertical_chainStyle="packed"
         />
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/AuthButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/SendButton"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/CreateProfileButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintWidth_percent="0.4"
         android:text="Авторизация"
-        android:id="@+id/AuthButton"
+        app:layout_constraintVertical_chainStyle="packed"
         />
     <com.google.android.material.button.MaterialButton
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/AuthButton"
+        app:layout_constraintBottom_toTopOf="@id/EmailCodeEditText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintWidth_percent="0.4"
         android:text="Создать профиль"
         android:id="@+id/CreateProfileButton"
+        app:layout_constraintVertical_chainStyle="packed"
         />
 
     <EditText
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintWidth_percent="0.4"
-        app:layout_constraintTop_toBottomOf="@id/AuthButton"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/CreateProfileButton"
+        app:layout_constraintBottom_toTopOf="@id/EmailEditText"
+        android:hint="21345"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:id="@+id/EmailCodeEditText"
         android:inputType="number"
+        app:layout_constraintVertical_chainStyle="packed"
+        />
+
+    <EditText
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintWidth_percent="0.4"
+        app:layout_constraintTop_toBottomOf="@id/EmailCodeEditText"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:hint="example@ex.ex"
+        android:id="@+id/EmailEditText"
+        android:inputType="textEmailAddress"
+        app:layout_constraintVertical_chainStyle="packed"
         />
 
 

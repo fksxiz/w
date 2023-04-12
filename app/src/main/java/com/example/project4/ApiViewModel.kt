@@ -7,7 +7,14 @@ class ApiViewModel : ViewModel() {
     private val repository: ApiRepository = ApiRepository()
     fun SendCode(data: String) {
         repository.sendCode(data) {
-            Log.d("йцуйцу", if (it) "Успех" else "Не успех")
+            Log.d("Server", if (it) "Успех" else "Не успех")
+        }
+    }
+
+    fun AuthProfile(data: EmailData){
+        repository.AuthProfile(data){
+            Log.d("Server", if (it) "Успех" else "Не успех")
+            return@AuthProfile ""
         }
     }
 }
