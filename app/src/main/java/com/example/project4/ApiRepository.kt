@@ -76,18 +76,26 @@ class ApiRepository {
                     return
                 }
 
-                callback(parseAuthResponse(response.body.toString()))
+                val responseBody = response.body?.string() as String
+                callback(parseAuthResponse(responseBody))
             }
 
         })
     }
 
     fun CreateProfile(data: String, callback: () -> Unit) {
-//        val request = Request.Builder().post(
-//            dataToRequestBody(data)
-//        ).url(
-//
-//        ).build()
+
+
+
+        val request = Request.Builder().post(
+            dataToRequestBody("")
+        ).url(
+            HttpUrl.Builder()
+                .scheme("https")
+                .host("medic.madskill.ru")
+                .addPathSegments("api/createProfile")
+                .build()
+        ).addHeader("id",).build()
     }
 
     private fun parseAuthResponse(body:String): String{
