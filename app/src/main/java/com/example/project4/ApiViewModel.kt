@@ -13,8 +13,7 @@ class ApiViewModel : ViewModel() {
 
     fun AuthProfile(data: EmailData){
         repository.AuthProfile(data){
-            Log.d("Server", if (it) "Успех" else "Не успех")
-            return@AuthProfile ""
+            Log.d("Server", it)
         }
     }
 }

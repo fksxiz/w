@@ -4,6 +4,8 @@ import android.util.Log
 import okhttp3.*
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.RequestBody.Companion.toRequestBody
+import org.json.JSONException
+import org.json.JSONObject
 import java.io.IOException
 
 class ApiRepository {
@@ -44,7 +46,7 @@ class ApiRepository {
         })
     }
 
-    fun AuthProfile(data: EmailData, callback: (Boolean) -> String) {
+    fun AuthProfile(data: EmailData, callback: (String) -> Unit) {
 
         val email = data.email
         val code = data.code
@@ -64,16 +66,17 @@ class ApiRepository {
         client.newCall(request).enqueue(object:Callback{
             override fun onFailure(call: Call, e: IOException) {
                 Log.e("Server","${e.message}")
-                callback(false)
+                callback(e.message.toString())
             }
 
             override fun onResponse(call: Call, response: Response) {
                 if(!response.isSuccessful){
                     Log.e("Server",response.message)
-                    callback(false)
+                    callback(response.message)
                     return
                 }
-                callback(true)
+
+                callback(parseAuthResponse(response.body.toString()))
             }
 
         })
@@ -85,5 +88,18 @@ class ApiRepository {
 //        ).url(
 //
 //        ).build()
+    }
+
+    private fun parseAuthResponse(body:String): String{
+        return try {
+
+            val response = JSONObject(body)
+
+            response.getString("token")
+
+        }catch (e: JSONException){
+            Log.e("Parser","parse response error = ${e.message}")
+            "Parse error"
+        }
     }
 }
