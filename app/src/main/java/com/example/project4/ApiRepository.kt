@@ -4,6 +4,7 @@ import android.util.Log
 import okhttp3.*
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.RequestBody.Companion.toRequestBody
+import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
 import java.io.IOException
@@ -156,5 +157,61 @@ class ApiRepository {
                 callback(response.message)
             }
         })
+    }
+
+    fun GetCatalog(callback: (List<Catalog>) -> Unit){
+        val request = Request.Builder()
+            .get()
+            .url(
+                HttpUrl.Builder()
+                    .scheme("https")
+                    .host("medic.madskill.ru")
+                    .addPathSegments("api/catalog")
+                    .build()
+            ).build()
+        client.newCall(request).enqueue(object:Callback{
+            override fun onFailure(call: Call, e: IOException) {
+                Log.e("SERVER","${e.message}")
+                callback(emptyList<Catalog>())
+            }
+
+            override fun onResponse(call: Call, response: Response) {
+                if(!response.isSuccessful){
+                    Log.e("SERVER",response.message)
+                    callback(emptyList<Catalog>())
+                }
+                Log.e("SERVER",response.message)
+
+                val responseBody = response.body?.string() as String
+
+                val res:List<Catalog> = parseBody(responseBody)
+                callback(res)
+            }
+
+        })
+
+    }
+
+    private fun parseBody(body:String):List<Catalog>{
+        return  try{
+            val catalog = JSONArray(body)
+
+            val resultList = mutableListOf<Catalog>()
+            (0 until catalog.length())
+                .map { index -> catalog.getJSONObject(index) }
+                .map{ Object ->
+                   val name = Object.getString("name")
+                    val description = Object.getString("description")
+                    val category = Object.getString("category")
+                    val price = Object.getString("price")
+                    val id = Object.getLong("id")
+                    resultList.add(Catalog(id,name,description, price, category))
+                }
+
+            resultList
+        }catch (e: JSONException){
+            Log.e("SERVER","parse error = ${e.message}")
+            emptyList<Catalog>()
+        }
     }
 }

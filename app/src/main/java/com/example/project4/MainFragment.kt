@@ -20,6 +20,7 @@ class MainFragment : Fragment() {
     private lateinit var authButton: MaterialButton
     private lateinit var createButton: MaterialButton
     private lateinit var dataButton: MaterialButton
+    private lateinit var catalogButton: MaterialButton
     private lateinit var codeEditText: EditText
     private lateinit var emailEditText: EditText
     private val apiViewModel: ApiViewModel by viewModels()
@@ -41,6 +42,7 @@ class MainFragment : Fragment() {
             authButton = findViewById(R.id.AuthButton)
             createButton = findViewById(R.id.CreateProfileButton)
             dataButton = findViewById(R.id.dataButton)
+            catalogButton = findViewById(R.id.catalogButton)
             codeEditText = findViewById(R.id.EmailCodeEditText)
             emailEditText = findViewById(R.id.EmailEditText)
         }
@@ -48,6 +50,11 @@ class MainFragment : Fragment() {
         authButton.setOnClickListener(OnAuthButtonClickListener)
         createButton.setOnClickListener(OnCreateButtonClickListener)
         dataButton.setOnClickListener(onDataButtonClickListener)
+        catalogButton.setOnClickListener(OnCatalogClickListener)
+    }
+
+    private val OnCatalogClickListener = OnClickListener {
+        (activity as MainActivity).showFragment(CatalogFragment.newInstance())
     }
 
     private val OnSendButtonClickListener = OnClickListener {

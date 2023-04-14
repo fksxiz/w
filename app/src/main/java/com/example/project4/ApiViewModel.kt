@@ -1,11 +1,14 @@
 package com.example.project4
 
 import android.util.Log
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class ApiViewModel : ViewModel() {
     private val repository: ApiRepository = ApiRepository()
     var token = ""
+
+    val catalog = MutableLiveData<List<Catalog>>()
 
     /**
      * @param data it's param data
@@ -62,6 +65,12 @@ class ApiViewModel : ViewModel() {
                 "}"
         repository.UpdateProfile(data){
             Log.d("Server", it)
+        }
+    }
+
+    fun GetCatalog(callback: (List<Catalog>) -> Unit){
+        repository.GetCatalog(){
+            catalog.postValue(it)
         }
     }
 }

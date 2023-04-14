@@ -8,7 +8,7 @@ import android.widget.BaseAdapter
 import android.widget.TextView
 
 class ListAdapter(private val context:Context):BaseAdapter() {
-    val catalog: List<Catalog> = emptyList()
+    var catalog: List<Catalog> = emptyList()
 
     override fun getCount(): Int {
         return catalog.count()

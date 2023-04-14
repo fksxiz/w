@@ -10,7 +10,8 @@
        android:layout_height="match_parent"
        android:id="@+id/CatalogListView"
        tools:listitem="@layout/catalog_item"
-
+         android:divider="@color/white"
+       android:dividerHeight="5dp"
        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
