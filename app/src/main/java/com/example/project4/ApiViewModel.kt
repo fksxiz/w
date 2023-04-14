@@ -7,6 +7,9 @@ class ApiViewModel : ViewModel() {
     private val repository: ApiRepository = ApiRepository()
     var token = ""
 
+    /**
+     * @param data it's param data
+     */
     fun SendCode(data: String) {
         repository.sendCode(data) {
             Log.d("Server", if (it) "Успех" else "Не успех")
@@ -39,6 +42,25 @@ class ApiViewModel : ViewModel() {
                 "\"image\": \"${image}\"" +
                 "}"
         repository.CreateProfile(data) {
+            Log.d("Server", it)
+        }
+    }
+
+    fun UpdateProfile(
+        firstName: String,
+        lastName: String,
+        middleName: String,
+        bith: String,
+        gender: String,
+    ){
+        val data = "{" +
+                "\"firstname\": \"${firstName}\"," +
+                "\"lastname\": \"${lastName}\"," +
+                "\"middlename\": \"${middleName}\"," +
+                "\"bith\": \"${bith}\"," +
+                "\"pol\": \"${gender}\"" +
+                "}"
+        repository.UpdateProfile(data){
             Log.d("Server", it)
         }
     }

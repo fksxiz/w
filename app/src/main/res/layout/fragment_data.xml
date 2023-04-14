@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".DataFragment"
+    android:background="@color/white">
+
+    <TextView
+        android:id="@+id/dataNameTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintWidth_percent="0.4"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/dataMiddleNameTextView"
+        android:text="Имя не распознано"
+        app:layout_constraintVertical_chainStyle="packed"
+        android:layout_margin="10dp"        android:textColor="@color/black"
+        />
+
+    <TextView
+        android:id="@+id/dataMiddleNameTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintWidth_percent="0.4"
+        app:layout_constraintTop_toBottomOf="@id/dataNameTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/dataLastNameTextView"
+        android:text="Отчество не распознано"
+        app:layout_constraintVertical_chainStyle="packed"
+        android:layout_margin="10dp"        android:textColor="@color/black"
+        />
+
+    <TextView
+        android:id="@+id/dataLastNameTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintWidth_percent="0.4"
+        app:layout_constraintTop_toBottomOf="@id/dataMiddleNameTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/dataBirthTextView"
+        android:text="Фамилия не распознана"
+        app:layout_constraintVertical_chainStyle="packed"
+        android:layout_margin="10dp"
+        android:textColor="@color/black"
+        />
+
+    <TextView
+        android:id="@+id/dataBirthTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintWidth_percent="0.4"
+        app:layout_constraintTop_toBottomOf="@id/dataLastNameTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/dataGenderTextView"
+        android:text="Дата рождения не распознана"
+        app:layout_constraintVertical_chainStyle="packed"
+        android:layout_margin="10dp"
+        android:textColor="@color/black"
+        />
+
+    <TextView
+        android:id="@+id/dataGenderTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintWidth_percent="0.4"
+        app:layout_constraintTop_toBottomOf="@+id/dataBirthTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="Пол не распознан"
+        app:layout_constraintVertical_chainStyle="packed"
+        android:layout_margin="10dp"        android:textColor="@color/black"
+        />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="5dp"
+        android:id="@+id/backButton"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

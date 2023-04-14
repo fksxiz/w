@@ -129,4 +129,32 @@ class ApiRepository {
             "Parse error"
         }
     }
+
+    fun UpdateProfile(data: String, callback: (String) -> Unit){
+        val request = Request.Builder()
+            .put(dataToRequestBody(data)).url(
+                HttpUrl.Builder()
+                    .scheme("https")
+                    .host("medic.madskill.ru")
+                    .addPathSegments("api/updateProfile")
+                    .build()
+            )
+            .addHeader("Authorization", "Bearer ${BusinessToken.token}")
+            .build()
+        client.newCall(request).enqueue(object:Callback{
+            override fun onFailure(call: Call, e: IOException) {
+                Log.e("SERVER","${e.message}")
+                callback("${e.message}")
+            }
+
+            override fun onResponse(call: Call, response: Response) {
+                if(!response.isSuccessful){
+                    Log.e("SERVER", response.message)
+                    callback(response.message)
+                }
+
+                callback(response.message)
+            }
+        })
+    }
 }

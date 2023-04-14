@@ -10,6 +10,19 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/SendButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_percent="0.4"
+        android:text="Просмотреть данные о профиле"
+        android:id="@+id/dataButton"
+        app:layout_constraintVertical_chainStyle="packed"
+        />
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/dataButton"
         app:layout_constraintBottom_toTopOf="@id/AuthButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -18,6 +31,8 @@
         android:id="@+id/SendButton"
         app:layout_constraintVertical_chainStyle="packed"
         />
+
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/AuthButton"
         android:layout_width="0dp"
@@ -68,6 +83,7 @@
         android:hint="example@ex.ex"
         android:id="@+id/EmailEditText"
         android:inputType="textEmailAddress"
+        android:text="malyshkin_04@bk.ru"
         app:layout_constraintVertical_chainStyle="packed"
         />
 
